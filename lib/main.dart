@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/ui/forgot_password/forgot_password_screen.dart';
 
-import 'layout/forgot_password/forgot_password_screen.dart';
+
 
 void main() {
   runApp(const MyApp());
