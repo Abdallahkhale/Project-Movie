@@ -1,0 +1,2 @@
+C:/Users/Ismaeil/Documents/Android-projects/movies_app/android/app/.cxx/Debug/241241c4/x86/CMakeFiles/edit_cache.dir
+C:/Users/Ismaeil/Documents/Android-projects/movies_app/android/app/.cxx/Debug/241241c4/x86/CMakeFiles/rebuild_cache.dir
