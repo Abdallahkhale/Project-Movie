@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies/Core/assets/Colors/Colors.dart';
 
 import 'onboarding_data.dart';
 import 'onboarding_bottom_sheet.dart';
@@ -18,8 +19,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
     showModalBottomSheet(
       context: context,
-      backgroundColor: Colors.black87,
-      shape: RoundedRectangleBorder(
+      backgroundColor: ColorsApp.black,
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (context) {
@@ -50,16 +51,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    TextTheme textTheme = Theme.of(context).textTheme;
     final data = onboardingData[_currentIndex];
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: ColorsApp.black,
       body: Stack(
         children: [
           Container(
             foregroundDecoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.black, Colors.black.withOpacity(0)],
+                colors: [ColorsApp.black, ColorsApp.black.withOpacity(0)],
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
               ),
@@ -75,23 +77,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
                       data.title,
-                      style: TextStyle(
-                        fontSize: 36,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+                      style: textTheme.bodyLarge?.copyWith(fontSize: 36),
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(height: 15),
                     Text(
                       data.desc ?? "",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                      style: textTheme.bodyMedium,
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(height: 25),
@@ -99,7 +97,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       height: 55,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: Colors.amber,
+                        color: ColorsApp.gold,
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: MaterialButton(
@@ -107,13 +105,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           setState(() => _currentIndex = 1);
                           _showBottomSheet();
                         },
-                        child: Text(
+                        child: const Text(
                           "Explore Now",
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style:
+                              TextStyle(color: ColorsApp.black, fontSize: 20),
                         ),
                       ),
                     ),
