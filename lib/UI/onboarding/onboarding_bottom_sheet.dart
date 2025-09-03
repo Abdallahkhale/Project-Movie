@@ -22,7 +22,6 @@ class OnboardingBottomSheet extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
 
-        spacing: 10,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
@@ -33,12 +32,14 @@ class OnboardingBottomSheet extends StatelessWidget {
               color: Colors.white,
             ),
           ),
+          SizedBox(height: 10),
 
           Text(
             data.desc ?? "",
             style: TextStyle(color: Colors.white70, fontSize: 20),
             textAlign: TextAlign.center,
           ),
+          SizedBox(height: 10),
 
           Container(
             decoration: BoxDecoration(

@@ -59,7 +59,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Container(
             foregroundDecoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.black, Colors.black.withValues(alpha: 0)],
+                colors: [Colors.black, Colors.black.withOpacity(0)],
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
               ),
@@ -77,7 +77,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               child: Container(
                 padding: EdgeInsets.all(10),
                 child: Column(
-                  spacing: 15,
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
@@ -89,11 +88,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       ),
                       textAlign: TextAlign.center,
                     ),
+                    SizedBox(height: 15),
                     Text(
                       data.desc ?? "",
                       style: TextStyle(color: Colors.white, fontSize: 20),
                       textAlign: TextAlign.center,
                     ),
+                    SizedBox(height: 25),
                     Container(
                       height: 55,
                       width: double.infinity,

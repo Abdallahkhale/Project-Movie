@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:movies/Core/theme/theme.dart';
 import 'package:movies/UI/profile/update_profile.dart';
-import 'package:movies/onboarding/onboarding_screen.dart';
+import 'package:movies/UI/onboarding/onboarding_screen.dart';
 
 
 void main() {
@@ -18,20 +18,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeApp.theme,
       debugShowCheckedModeBanner: false
       ,
-      initialRoute: '/updateProfile',
-      routes: {
-        '/updateProfile': (context) => const UpdateProfile(),
-      },
-    );
-  }
-}
-
-
-      debugShowCheckedModeBanner: false,
       initialRoute: OnboardingScreen.routeName,
       routes: {
+        '/updateProfile': (context) => const UpdateProfile(),
         OnboardingScreen.routeName: (context) => OnboardingScreen(),
+
       },
     );
   }
 }
+
+
+    
