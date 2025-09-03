@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movies/UI/authentication/login_view.dart';
+
 import 'onboarding_data.dart';
 
 class OnboardingBottomSheet extends StatelessWidget {
@@ -50,8 +52,11 @@ class OnboardingBottomSheet extends StatelessWidget {
             width: double.infinity,
             height: 55,
             child: MaterialButton(
-              onPressed: onNext,
-
+              onPressed: isLast
+                  ? () {
+                      Navigator.pushNamed(context, LoginView.routeName);
+                    }
+                  : onNext,
               child: Text(
                 isLast ? "Finish" : "Next",
                 style: TextStyle(fontSize: 20),

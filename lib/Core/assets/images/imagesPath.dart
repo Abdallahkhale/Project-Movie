@@ -9,4 +9,12 @@ abstract class ImagesPath {
   static const String avatar7 = '$root/Avatar_7.png';
   static const String avatar8 = '$root/Avatar_8.png';
   static const String avatar9 = '$root/Avatar_9.png';
+  static const String loginImg = "assets/images/splash.png";
+  static const String languageSwitchImg = "assets/images/Language Switch.png";
+  static const String avatarListImg = "assets/images/Avatar_list.png";
+  static const String emailIcn = "assets/icons/Email_Icon.png";
+  static const String googleIcn = "assets/icons/Google_Icon.png";
+  static const String nameIcn = "assets/icons/Name_Icon.png";
+  static const String passwordIcn = "assets/icons/Password_Icon.png";
+  static const String phoneIcn = "assets/icons/Phone_Icon.png";
 }
