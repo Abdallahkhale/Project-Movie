@@ -3,6 +3,7 @@ import 'package:movies/Core/Custom_widget/CustomTextFormField.dart';
 import 'package:movies/Core/Custom_widget/custombutton.dart';
 import 'package:movies/Core/assets/Colors/Colors.dart';
 import 'package:movies/Core/assets/images/imagesPath.dart';
+import 'package:movies/UI/authentication/login_view.dart';
 
 class RegisterView extends StatefulWidget {
   static const routeName = '/register_view';
@@ -181,7 +182,8 @@ class _RegisterViewState extends State<RegisterView> {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.of(context)
+                            .pushReplacementNamed(LoginView.routeName);
                       },
                       child: Text("Login", style: theme.textTheme.bodyLarge),
                     ),

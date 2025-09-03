@@ -114,7 +114,8 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, RegisterView.routeName);
+                      Navigator.pushReplacementNamed(
+                          context, RegisterView.routeName);
                     },
                     child: Text(
                       "Create one",

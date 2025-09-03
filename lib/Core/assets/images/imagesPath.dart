@@ -9,7 +9,7 @@ abstract class ImagesPath {
   static const String avatar7 = '$root/Avatar_7.png';
   static const String avatar8 = '$root/Avatar_8.png';
   static const String avatar9 = '$root/Avatar_9.png';
-<<<<<<< HEAD
+
   static const String onboarding1 = '$root/onboarding1.png';
   static const String onboarding2 = '$root/onboarding2.png';
   static const String onboarding3 = '$root/onboarding3.png';
@@ -18,8 +18,6 @@ abstract class ImagesPath {
   static const String onboarding6 = '$root/onboarding6.png';
   static const String splash = '$root/Splash.png';
   static const String nativesplash = '$root/nativesplash.png';
-}
-=======
   static const String loginImg = "assets/images/splash.png";
   static const String languageSwitchImg = "assets/images/Language Switch.png";
   static const String avatarListImg = "assets/images/Avatar_list.png";
@@ -29,4 +27,3 @@ abstract class ImagesPath {
   static const String passwordIcn = "assets/icons/Password_Icon.png";
   static const String phoneIcn = "assets/icons/Phone_Icon.png";
 }
->>>>>>> main
