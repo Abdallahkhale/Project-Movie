@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         OnboardingScreen.routeName: (context) => OnboardingScreen(),
         LoginView.routeName: (context) => const LoginView(),
         RegisterView.routeName: (context) => const RegisterView(),
-        HomeView.routeName: (context) => const HomeView(),
+        HomeView.routeName: (context) => HomeView(),
       },
     );
   }

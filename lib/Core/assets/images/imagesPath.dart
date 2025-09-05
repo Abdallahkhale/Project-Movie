@@ -26,4 +26,8 @@ abstract class ImagesPath {
   static const String nameIcn = "assets/icons/Name_Icon.png";
   static const String passwordIcn = "assets/icons/Password_Icon.png";
   static const String phoneIcn = "assets/icons/Phone_Icon.png";
+  static const String home = 'assets/icons/home.png';
+  static const String search = 'assets/icons/search.png';
+  static const String explore = 'assets/icons/explore.png';
+  static const String Profiel = 'assets/icons/Profiel.png';
 }

@@ -4,6 +4,7 @@ import 'package:movies/Core/Custom_widget/custombutton.dart';
 import 'package:movies/Core/assets/Colors/Colors.dart';
 import 'package:movies/Core/assets/images/imagesPath.dart';
 import 'package:movies/UI/authentication/login_view.dart';
+import 'package:movies/UI/home/home_view.dart';
 
 class RegisterView extends StatefulWidget {
   static const routeName = '/register_view';
@@ -158,7 +159,10 @@ class _RegisterViewState extends State<RegisterView> {
                 CustomButtonWidget(
                   color: ColorsApp.gold,
                   onTap: () {
-                    if (_formKey.currentState!.validate()) {}
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.of(context)
+                          .pushReplacementNamed(HomeView.routeName);
+                    }
                   },
                   backgroundColor: ColorsApp.gold,
                   child: Text(
