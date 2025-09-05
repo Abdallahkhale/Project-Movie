@@ -4,6 +4,7 @@ import 'package:movies/UI/authentication/login_view.dart';
 import 'package:movies/UI/authentication/register_view.dart';
 import 'package:movies/UI/home/home_view.dart';
 import 'package:movies/UI/onboarding/onboarding_screen.dart';
+
 import 'package:movies/UI/profile/update_profile.dart';
 
 void main() {
@@ -17,19 +18,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeApp.theme,
-      debugShowCheckedModeBanner: false
-      ,
+      debugShowCheckedModeBanner: false,
       initialRoute: OnboardingScreen.routeName,
       routes: {
         UpdateProfile.routeName: (context) => const UpdateProfile(),
         OnboardingScreen.routeName: (context) => OnboardingScreen(),
         LoginView.routeName: (context) => const LoginView(),
         RegisterView.routeName: (context) => const RegisterView(),
-        HomeView.routeName: (context) => const HomeView(),
+        HomeView.routeName: (context) => HomeView(),
       },
     );
   }
 }
-
-
-    
