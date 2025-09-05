@@ -9,6 +9,8 @@ abstract class ImagesPath {
   static const String avatar7 = '$root/Avatar_7.png';
   static const String avatar8 = '$root/Avatar_8.png';
   static const String avatar9 = '$root/Avatar_9.png';
+  static const String watchnow = '$root/watchnow.png';
+  static const String availablenow = '$root/availablenow.png';
 
   static const String onboarding1 = '$root/onboarding1.png';
   static const String onboarding2 = '$root/onboarding2.png';

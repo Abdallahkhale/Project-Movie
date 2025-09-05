@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeApp.theme,
       debugShowCheckedModeBanner: false,
-      initialRoute: OnboardingScreen.routeName,
+      initialRoute: HomeView.routeName,
       routes: {
         UpdateProfile.routeName: (context) => const UpdateProfile(),
         OnboardingScreen.routeName: (context) => OnboardingScreen(),
