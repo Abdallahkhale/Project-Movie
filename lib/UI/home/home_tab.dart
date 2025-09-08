@@ -26,7 +26,10 @@ class _HomeTabState extends State<HomeTab> {
       body: BlocBuilder<MovieBloc, MovieState>(
         builder: (context, state) {
           if (state is MovieLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+                child: CircularProgressIndicator(
+              color: ColorsApp.gold,
+            ));
           } else if (state is MovieLoaded) {
             final movies = state.movies;
 
@@ -36,8 +39,10 @@ class _HomeTabState extends State<HomeTab> {
                   child: CachedNetworkImage(
                     imageUrl: movies[currentIndex].backgroundImage,
                     fit: BoxFit.cover,
-                    placeholder: (context, url) =>
-                        const Center(child: CircularProgressIndicator()),
+                    placeholder: (context, url) => const Center(
+                        child: CircularProgressIndicator(
+                      color: ColorsApp.gold,
+                    )),
                     errorWidget: (context, url, error) => Image.network(
                         "https://static.vecteezy.com/system/resources/previews/017/178/206/original/loading-bar-progress-icon-with-transparent-background-free-png.png"),
                   ),
@@ -52,7 +57,6 @@ class _HomeTabState extends State<HomeTab> {
                           height: size.height * 0.1,
                         ),
                       ),
-
                       CarouselSlider(
                         options: CarouselOptions(
                           height: size.height * 0.45,
@@ -75,7 +79,9 @@ class _HomeTabState extends State<HomeTab> {
                                   fit: BoxFit.cover,
                                   width: double.infinity,
                                   placeholder: (context, url) => const Center(
-                                      child: CircularProgressIndicator()),
+                                      child: CircularProgressIndicator(
+                                    color: ColorsApp.gold,
+                                  )),
                                   errorWidget: (context, url, error) =>
                                       Image.network(
                                           "https://static.vecteezy.com/system/resources/previews/017/178/206/original/loading-bar-progress-icon-with-transparent-background-free-png.png"),
@@ -109,8 +115,6 @@ class _HomeTabState extends State<HomeTab> {
                           );
                         }).toList(),
                       ),
-
-                      // Watch Now
                       Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Image.asset(
@@ -118,7 +122,6 @@ class _HomeTabState extends State<HomeTab> {
                           height: size.height * 0.15,
                         ),
                       ),
-
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: Row(
@@ -129,7 +132,6 @@ class _HomeTabState extends State<HomeTab> {
                           ],
                         ),
                       ),
-
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
@@ -149,6 +151,7 @@ class _HomeTabState extends State<HomeTab> {
                                             const Center(
                                                 child:
                                                     CircularProgressIndicator(
+                                                        color: ColorsApp.gold,
                                                         strokeWidth: 2)),
                                         errorWidget: (context, url, error) =>
                                             Image.network(
