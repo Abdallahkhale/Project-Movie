@@ -30,7 +30,6 @@ class _LoginViewState extends State<LoginView> {
           key: _formkey,
           child: SingleChildScrollView(
             physics: const ClampingScrollPhysics(),
-            
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -153,11 +152,16 @@ class _LoginViewState extends State<LoginView> {
                   onTap: () {},
                   color: ColorsApp.gold,
                   child: Row(
-                    //spacing: 8,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset(ImagesPath.googleIcn, scale: -1),
-                       const SizedBox(height: 8),
+                      // Fixed: Removed invalid negative scale parameter
+                      Image.asset(
+                        ImagesPath.googleIcn,
+                        width: 24,
+                        height: 24,
+                      ),
+                      // Fixed: Changed from height to width for horizontal spacing
+                      const SizedBox(width: 8),
                       Text(
                         "Login With Google",
                         style: theme.textTheme.bodyLarge?.copyWith(
@@ -168,10 +172,13 @@ class _LoginViewState extends State<LoginView> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                const Image(
-                  image: AssetImage(ImagesPath.languageSwitchImg),
+                const SizedBox(
                   width: 70,
                   height: 40,
+                  child: Image(
+                    image: AssetImage(ImagesPath.languageSwitchImg),
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ],
             ),
