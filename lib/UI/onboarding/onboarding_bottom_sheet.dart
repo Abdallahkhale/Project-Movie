@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies/Core/assets/Colors/Colors.dart';
 import 'onboarding_data.dart';
 
 class OnboardingBottomSheet extends StatelessWidget {
@@ -17,47 +18,37 @@ class OnboardingBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextTheme textTheme = Theme.of(context).textTheme;
     return Container(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       child: Column(
+       // spacing: 8,
         mainAxisSize: MainAxisSize.min,
-
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            data.title,
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
-          SizedBox(height: 10),
-
+          Text(data.title, style: textTheme.bodyLarge?.copyWith(fontSize: 24)),
+         const SizedBox(height: 8),
           Text(
             data.desc ?? "",
-            style: TextStyle(color: Colors.white70, fontSize: 20),
+            style: textTheme.bodyMedium,
             textAlign: TextAlign.center,
           ),
+          const SizedBox(height: 8),
           SizedBox(height: 10),
-
           Container(
             decoration: BoxDecoration(
-              color: Colors.amber,
-
+              color: ColorsApp.gold,
               borderRadius: BorderRadius.circular(15),
             ),
             width: double.infinity,
             height: 55,
             child: MaterialButton(
               onPressed: onNext,
-
-              child: Text(
-                isLast ? "Finish" : "Next",
-                style: TextStyle(fontSize: 20),
-              ),
+              child: Text(isLast ? "Finish" : "Next",
+                  style: textTheme.bodyLarge?.copyWith(color: ColorsApp.black)),
             ),
           ),
+          const SizedBox(height: 8),
           if (onBack != null)
             Container(
               width: double.infinity,
@@ -68,7 +59,7 @@ class OnboardingBottomSheet extends StatelessWidget {
               ),
               child: MaterialButton(
                 onPressed: onBack,
-                child: Text(
+                child: const Text(
                   "Back",
                   style: TextStyle(color: Colors.amber, fontSize: 20),
                 ),

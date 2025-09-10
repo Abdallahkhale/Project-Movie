@@ -6,6 +6,7 @@ import 'package:movies/Core/assets/images/imagesPath.dart';
 import 'package:movies/Core/theme/theme.dart';
 
 class UpdateProfile extends StatefulWidget {
+  static const routeName = '/update_profile';
   const UpdateProfile({super.key});
 
   @override

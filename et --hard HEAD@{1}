@@ -1,0 +1,19 @@
+[33m70e325c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mAbdallah[m[33m, [m[1;31morigin/Abdallah[m[33m)[m HEAD@{0}: pull origin Abdallah: Fast-forward
+[33mc75019e[m HEAD@{1}: checkout: moving from main to Abdallah
+[33mdb8ac83[m[33m ([m[1;32mmain[m[33m)[m HEAD@{2}: commit: WIP: changes before switching branch
+[33m416059e[m[33m ([m[1;31morigin/main[m[33m)[m HEAD@{3}: commit: merge abdallah & Ahemd
+[33mccb0c1b[m HEAD@{4}: reset: moving to origin/main
+[33m38cfd49[m HEAD@{5}: checkout: moving from Abdallah to main
+[33mc75019e[m HEAD@{6}: checkout: moving from master to Abdallah
+[33med5b878[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{7}: checkout: moving from main to master
+[33m38cfd49[m HEAD@{8}: checkout: moving from main to main
+[33m38cfd49[m HEAD@{9}: checkout: moving from Abdallah to main
+[33mc75019e[m HEAD@{10}: commit (merge): Update Profile page
+[33m38cfd49[m HEAD@{11}: checkout: moving from master to Abdallah
+[33med5b878[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{12}: checkout: moving from Abdallah to master
+[33m38cfd49[m HEAD@{13}: checkout: moving from master to Abdallah
+[33med5b878[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{14}: checkout: moving from main to master
+[33m38cfd49[m HEAD@{15}: checkout: moving from main to main
+[33m38cfd49[m HEAD@{16}: checkout: moving from Abdallah to main
+[33m38cfd49[m HEAD@{17}: checkout: moving from master to Abdallah
+[33med5b878[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{18}: commit (initial): Update Profile Page
