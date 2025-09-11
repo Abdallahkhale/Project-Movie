@@ -4,7 +4,15 @@ import 'package:movies/Core/assets/Colors/Colors.dart';
 class ThemeApp {
   static ThemeData theme = ThemeData(
     scaffoldBackgroundColor: ColorsApp.black,
+    
+    iconTheme: const IconThemeData(
+      color: ColorsApp.gold,
+      
+    ),
     appBarTheme: const AppBarTheme(
+      iconTheme: IconThemeData(
+        color: ColorsApp.gold,
+      ),
       backgroundColor: ColorsApp.black,
       elevation: 0,
     ),

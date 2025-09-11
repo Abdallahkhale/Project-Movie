@@ -22,152 +22,166 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       backgroundColor: ColorsApp.black,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formkey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Image.asset(ImagesPath.loginImg, height: 80),
-              const SizedBox(height: 15),
-              CustomTextFormField(
-                validator: (String? value) {
-                  if (value == null || value.isEmpty) {
-                    return "Please enter your email";
-                  }
-                  return null;
-                },
-                prefixIcon: const Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: ImageIcon(
-                    AssetImage(ImagesPath.emailIcn),
-                    color: Colors.white,
-                  ),
-                ),
-                hintText: "Email",
-                isPassword: false,
-              ),
-              const SizedBox(height: 15),
-              CustomTextFormField(
-                validator: (String? value) {
-                  if (value == null || value.isEmpty) {
-                    return "Please enter your password";
-                  }
-                  return null;
-                },
-                prefixIcon: const Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: ImageIcon(
-                    AssetImage(ImagesPath.passwordIcn),
-                    color: Colors.white,
-                  ),
-                ),
-                hintText: "Password",
-                isPassword: true,
-              ),
-              const SizedBox(height: 15),
-              Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    "Forget Password?",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      color: ColorsApp.gold,
-                      decoration: TextDecoration.underline,
-                      decorationColor: ColorsApp.gold,
-                      decorationThickness: 1,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 15),
-              CustomButtonWidget(
-                color: ColorsApp.gold,
-                onTap: () {
-                  if (_formkey.currentState!.validate()) {
-                    Navigator.pushNamed(context, HomeView.routeName);
-                  }
-                },
-                backgroundColor: ColorsApp.gold,
-                child: Text(
-                  "Login",
-                  style: theme.textTheme.bodyLarge?.copyWith(
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Don't have an account?",
-                    style: theme.textTheme.bodyMedium?.copyWith(
+          child: SingleChildScrollView(
+            physics: const ClampingScrollPhysics(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Image.asset(ImagesPath.loginImg, height: 80),
+                const SizedBox(height: 15),
+                CustomTextFormField(
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "Please enter your email";
+                    }
+                    return null;
+                  },
+                  prefixIcon: const Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: ImageIcon(
+                      AssetImage(ImagesPath.emailIcn),
                       color: Colors.white,
                     ),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, RegisterView.routeName);
-                    },
-                    child: Text(
-                      "Create one",
-                      style: theme.textTheme.bodyMedium?.copyWith(
-                        color: ColorsApp.gold,
-                        decorationColor: ColorsApp.gold,
+                  hintText: "Email",
+                  isPassword: false,
+                ),
+                const SizedBox(height: 15),
+                CustomTextFormField(
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "Please enter your password";
+                    }
+                    return null;
+                  },
+                  prefixIcon: const Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: ImageIcon(
+                      AssetImage(ImagesPath.passwordIcn),
+                      color: Colors.white,
+                    ),
+                  ),
+                  hintText: "Password",
+                  isPassword: true,
+                ),
+                const SizedBox(height: 15),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      "Forget Password?",
+                      style: TextStyle(
+                        fontSize: 16,
                         fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 15),
-              Row(
-                children: [
-                  const Expanded(child: Divider(color: ColorsApp.gold)),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: Text(
-                      "OR",
-                      style: theme.textTheme.bodyMedium?.copyWith(
                         color: ColorsApp.gold,
+                        decoration: TextDecoration.underline,
+                        decorationColor: ColorsApp.gold,
+                        decorationThickness: 1,
                       ),
                     ),
                   ),
-                  const Expanded(child: Divider(color: ColorsApp.gold)),
-                ],
-              ),
-              const SizedBox(height: 15),
-              CustomButtonWidget(
-                onTap: () {},
-                color: ColorsApp.gold,
-                child: Row(
-                  spacing: 8,
+                ),
+                const SizedBox(height: 15),
+                CustomButtonWidget(
+                  color: ColorsApp.gold,
+                  onTap: () {
+                    if (_formkey.currentState!.validate()) {
+                      Navigator.pushNamed(context, HomeView.routeName);
+                    }
+                  },
+                  backgroundColor: ColorsApp.gold,
+                  child: Text(
+                    "Login",
+                    style: theme.textTheme.bodyLarge?.copyWith(
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 15),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(ImagesPath.googleIcn, scale: -1),
                     Text(
-                      "Login With Google",
-                      style: theme.textTheme.bodyLarge?.copyWith(
-                        color: Colors.black,
+                      "Don't have an account?",
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: Colors.white,
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(
+                            context, RegisterView.routeName);
+                      },
+                      child: Text(
+                        "Create one",
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: ColorsApp.gold,
+                          decorationColor: ColorsApp.gold,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                   ],
                 ),
-              ),
-              const SizedBox(height: 10),
-              const Image(
-                image: AssetImage(ImagesPath.languageSwitchImg),
-                width: 70,
-                height: 40,
-              ),
-            ],
+                const SizedBox(height: 15),
+                Row(
+                  children: [
+                    const Expanded(child: Divider(color: ColorsApp.gold)),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Text(
+                        "OR",
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: ColorsApp.gold,
+                        ),
+                      ),
+                    ),
+                    const Expanded(child: Divider(color: ColorsApp.gold)),
+                  ],
+                ),
+                const SizedBox(height: 15),
+                CustomButtonWidget(
+                  onTap: () {},
+                  color: ColorsApp.gold,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // Fixed: Removed invalid negative scale parameter
+                      Image.asset(
+                        ImagesPath.googleIcn,
+                        width: 24,
+                        height: 24,
+                      ),
+                      // Fixed: Changed from height to width for horizontal spacing
+                      const SizedBox(width: 8),
+                      Text(
+                        "Login With Google",
+                        style: theme.textTheme.bodyLarge?.copyWith(
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 10),
+                const SizedBox(
+                  width: 70,
+                  height: 40,
+                  child: Image(
+                    image: AssetImage(ImagesPath.languageSwitchImg),
+                    fit: BoxFit.contain,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
