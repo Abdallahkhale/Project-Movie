@@ -8,12 +8,14 @@ class CustomTextFormField extends StatefulWidget {
     this.hintText,
     this.isPassword = false,
     this.validator,
+    this.controller,
   });
 
   final Widget? prefixIcon;
   final String? hintText;
   final bool isPassword;
   final String? Function(String?)? validator;
+  final TextEditingController? controller;
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();

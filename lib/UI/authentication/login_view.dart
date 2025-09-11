@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:movies/Core/Custom_widget/CustomTextFormField.dart';
 import 'package:movies/Core/Custom_widget/custombutton.dart';
 import 'package:movies/Core/assets/Colors/Colors.dart';
 import 'package:movies/Core/assets/images/imagesPath.dart';
+import 'package:movies/Core/network/controllers/auth_controller.dart';
 import 'package:movies/UI/authentication/register_view.dart';
-import 'package:movies/UI/home/home_view.dart';
 
 class LoginView extends StatefulWidget {
   static const routeName = '/login_view';
@@ -17,6 +18,8 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +37,7 @@ class _LoginViewState extends State<LoginView> {
               Image.asset(ImagesPath.loginImg, height: 80),
               const SizedBox(height: 15),
               CustomTextFormField(
+                controller: _emailController,
                 validator: (String? value) {
                   if (value == null || value.isEmpty) {
                     return "Please enter your email";
@@ -52,6 +56,7 @@ class _LoginViewState extends State<LoginView> {
               ),
               const SizedBox(height: 15),
               CustomTextFormField(
+                controller: _passwordController,
                 validator: (String? value) {
                   if (value == null || value.isEmpty) {
                     return "Please enter your password";
@@ -91,7 +96,11 @@ class _LoginViewState extends State<LoginView> {
                 color: ColorsApp.gold,
                 onTap: () {
                   if (_formkey.currentState!.validate()) {
-                    Navigator.pushNamed(context, HomeView.routeName);
+                    final authController = Get.put(AuthController());
+                    authController.login(
+                      email: _emailController.text,
+                      password: _passwordController.text,
+                    );
                   }
                 },
                 backgroundColor: ColorsApp.gold,

@@ -1,4 +1,7 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:movies/Core/network/dio_helper_network.dart';
 import 'package:movies/Core/theme/theme.dart';
 import 'package:movies/UI/authentication/login_view.dart';
 import 'package:movies/UI/authentication/register_view.dart';
@@ -7,6 +10,8 @@ import 'package:movies/UI/onboarding/onboarding_screen.dart';
 import 'package:movies/UI/profile/update_profile.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  DioHelper.init();
   runApp(const MyApp());
 }
 
@@ -27,6 +32,7 @@ class MyApp extends StatelessWidget {
         RegisterView.routeName: (context) => const RegisterView(),
         HomeView.routeName: (context) => const HomeView(),
       },
+      builder: EasyLoading.init(builder: BotToastInit()),
     );
   }
 }

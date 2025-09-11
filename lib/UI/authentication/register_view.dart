@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:movies/Core/Custom_widget/CustomTextFormField.dart';
 import 'package:movies/Core/Custom_widget/custombutton.dart';
 import 'package:movies/Core/assets/Colors/Colors.dart';
 import 'package:movies/Core/assets/images/imagesPath.dart';
+import 'package:movies/Core/network/controllers/auth_controller.dart';
 
 class RegisterView extends StatefulWidget {
   static const routeName = '/register_view';
@@ -15,8 +17,12 @@ class RegisterView extends StatefulWidget {
 
 class _RegisterViewState extends State<RegisterView> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -52,6 +58,7 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
                 const SizedBox(height: 24.0),
                 CustomTextFormField(
+                  controller: _nameController,
                   hintText: "Name",
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -69,6 +76,7 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
                 const SizedBox(height: 16.0),
                 CustomTextFormField(
+                  controller: _emailController,
                   hintText: "Email",
                   validator: (value) {
                     final emailRegExp = RegExp(
@@ -92,6 +100,7 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
                 const SizedBox(height: 16.0),
                 CustomTextFormField(
+                  controller: _passwordController,
                   hintText: "Password",
                   isPassword: true,
                   validator: (value) {
@@ -116,13 +125,15 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
                 const SizedBox(height: 16.0),
                 CustomTextFormField(
+                  controller: _confirmPasswordController,
                   hintText: "Re-Password",
                   isPassword: true,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please re-enter your password';
                     }
-                    if (value != _passwordController.text) {
+                    if (_confirmPasswordController.text !=
+                        _passwordController.text) {
                       return 'Password does not match';
                     }
                     return null;
@@ -137,8 +148,9 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
                 const SizedBox(height: 16.0),
                 CustomTextFormField(
+                  controller: _phoneController,
                   hintText: "Phone Number",
-                  isPassword: true,
+                  isPassword: false,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your phone number';
@@ -157,7 +169,16 @@ class _RegisterViewState extends State<RegisterView> {
                 CustomButtonWidget(
                   color: ColorsApp.gold,
                   onTap: () {
-                    if (_formKey.currentState!.validate()) {}
+                    if (_formKey.currentState!.validate()) {
+                      final authController = Get.put(AuthController());
+                      authController.register(
+                        name: _nameController.text,
+                        email: _emailController.text,
+                        password: _passwordController.text,
+                        confirmPassword: _confirmPasswordController.text,
+                        phone: _phoneController.text,
+                      );
+                    }
                   },
                   backgroundColor: ColorsApp.gold,
                   child: Text(
