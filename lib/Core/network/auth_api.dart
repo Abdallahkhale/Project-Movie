@@ -10,7 +10,7 @@ class AuthAPI {
     required String password,
     required String confirmPassword,
     required String phone,
-    int avatarId = 1,
+    required int avatarId,
   }) async {
     return await DioHelper.postData(
       url: EndPoints.signUp,
@@ -20,7 +20,7 @@ class AuthAPI {
         "password": password,
         "confirmPassword": confirmPassword,
         "phone": phone,
-        "avaterId": avatarId,
+        "avatarId": avatarId,
       },
     );
   }

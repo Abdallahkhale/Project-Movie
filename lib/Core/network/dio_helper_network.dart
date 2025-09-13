@@ -19,6 +19,10 @@ class DioHelper {
     required String url,
     required Map<String, dynamic> data,
   }) async {
-    return await dio.post(url, data: data);
+    return await dio.post(url,
+        data: data,
+        options: Options(
+          headers: {"Content-Type": "application/json"},
+        ));
   }
 }

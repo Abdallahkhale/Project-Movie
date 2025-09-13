@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movies/Core/Custom_widget/CustomTextFormField.dart';
@@ -16,6 +17,17 @@ class RegisterView extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<RegisterView> {
+  List<Widget> avatarList = [
+    const Image(image: AssetImage(ImagesPath.avatar1)),
+    const Image(image: AssetImage(ImagesPath.avatar2)),
+    const Image(image: AssetImage(ImagesPath.avatar3)),
+    const Image(image: AssetImage(ImagesPath.avatar4)),
+    const Image(image: AssetImage(ImagesPath.avatar5)),
+    const Image(image: AssetImage(ImagesPath.avatar6)),
+    const Image(image: AssetImage(ImagesPath.avatar7)),
+    const Image(image: AssetImage(ImagesPath.avatar8)),
+    const Image(image: AssetImage(ImagesPath.avatar9)),
+  ];
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -23,6 +35,7 @@ class _RegisterViewState extends State<RegisterView> {
   final TextEditingController _confirmPasswordController =
       TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
+  int selectedCarouselIndex = 0;
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -36,7 +49,10 @@ class _RegisterViewState extends State<RegisterView> {
           icon: const Icon(Icons.arrow_back),
           color: ColorsApp.gold,
         ),
-        title: const Text("Register"),
+        title: const Text(
+          "Register",
+          style: TextStyle(color: ColorsApp.gold),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -47,7 +63,27 @@ class _RegisterViewState extends State<RegisterView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Image.asset(ImagesPath.avatarListImg, height: 100),
+                CarouselSlider(
+                  items: avatarList,
+                  options: CarouselOptions(
+                      height: 161,
+                      aspectRatio: 16 / 9,
+                      viewportFraction: 0.55,
+                      initialPage: 0,
+                      enableInfiniteScroll: true,
+                      reverse: false,
+                      autoPlay: false,
+                      autoPlayAnimationDuration: Duration(microseconds: 800),
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          selectedCarouselIndex = index;
+                        });
+                      },
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      enlargeCenterPage: true,
+                      enlargeFactor: 0.5,
+                      scrollDirection: Axis.horizontal),
+                ),
                 Text(
                   "Avatar",
                   textAlign: TextAlign.center,
@@ -177,7 +213,7 @@ class _RegisterViewState extends State<RegisterView> {
                         password: _passwordController.text,
                         confirmPassword: _confirmPasswordController.text,
                         phone: _phoneController.text,
-                      );
+                          avatarId: selectedCarouselIndex);
                     }
                   },
                   backgroundColor: ColorsApp.gold,
