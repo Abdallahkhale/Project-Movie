@@ -1,5 +1,11 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:flutter_bloc/flutter_bloc.dart';
+=======
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:movies/Core/network/dio_helper_network.dart';
+>>>>>>> origin/Auth-Test
 import 'package:movies/Core/theme/theme.dart';
 
 import 'package:movies/UI/authentication/login_view.dart';
@@ -13,6 +19,7 @@ import 'package:movies/logic/bloc/movie_bloc.dart';
 import 'package:movies/logic/events/movie_event.dart';
 
 void main() {
+<<<<<<< HEAD
   final MovieRepository movieRepository = MovieRepository();
 
   runApp(
@@ -25,6 +32,11 @@ void main() {
       child: const MyApp(),
     ),
   );
+=======
+  WidgetsFlutterBinding.ensureInitialized();
+  DioHelper.init();
+  runApp(const MyApp());
+>>>>>>> origin/Auth-Test
 }
 
 class MyApp extends StatelessWidget {
@@ -43,6 +55,7 @@ class MyApp extends StatelessWidget {
         RegisterView.routeName: (context) => const RegisterView(),
         HomeView.routeName: (context) => HomeView(),
       },
+      builder: EasyLoading.init(builder: BotToastInit()),
     );
   }
 }
