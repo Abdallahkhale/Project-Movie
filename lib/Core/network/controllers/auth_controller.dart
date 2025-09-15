@@ -29,6 +29,7 @@ class AuthController extends GetxController {
 
       if (response.statusCode == 200) {
         EasyLoading.showSuccess('Account created successfully');
+        Get.offAllNamed('/login_view');
       } else {
         EasyLoading.showError(response.data["message"] ?? "Register failed");
       }
