@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:movies/Core/network/dio_helper_network.dart';
 import 'package:movies/Core/theme/theme.dart';
 
 import 'package:movies/UI/authentication/login_view.dart';
@@ -25,6 +28,10 @@ void main() {
       child: const MyApp(),
     ),
   );
+
+  WidgetsFlutterBinding.ensureInitialized();
+  DioHelper.init();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -43,6 +50,7 @@ class MyApp extends StatelessWidget {
         RegisterView.routeName: (context) => const RegisterView(),
         HomeView.routeName: (context) => HomeView(),
       },
+      builder: EasyLoading.init(builder: BotToastInit()),
     );
   }
 }

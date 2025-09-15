@@ -1,10 +1,16 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:movies/Core/Custom_widget/CustomTextFormField.dart';
 import 'package:movies/Core/Custom_widget/custombutton.dart';
 import 'package:movies/Core/assets/Colors/Colors.dart';
 import 'package:movies/Core/assets/images/imagesPath.dart';
+<<<<<<< HEAD
 import 'package:movies/UI/authentication/login_view.dart';
 import 'package:movies/UI/home/home_view.dart';
+=======
+import 'package:movies/Core/network/controllers/auth_controller.dart';
+>>>>>>> origin/Auth-Test
 
 class RegisterView extends StatefulWidget {
   static const routeName = '/register_view';
@@ -16,9 +22,25 @@ class RegisterView extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<RegisterView> {
+  List<Widget> avatarList = [
+    const Image(image: AssetImage(ImagesPath.avatar1)),
+    const Image(image: AssetImage(ImagesPath.avatar2)),
+    const Image(image: AssetImage(ImagesPath.avatar3)),
+    const Image(image: AssetImage(ImagesPath.avatar4)),
+    const Image(image: AssetImage(ImagesPath.avatar5)),
+    const Image(image: AssetImage(ImagesPath.avatar6)),
+    const Image(image: AssetImage(ImagesPath.avatar7)),
+    const Image(image: AssetImage(ImagesPath.avatar8)),
+    const Image(image: AssetImage(ImagesPath.avatar9)),
+  ];
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  int selectedCarouselIndex = 0;
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -32,7 +54,10 @@ class _RegisterViewState extends State<RegisterView> {
           icon: const Icon(Icons.arrow_back),
           color: ColorsApp.gold,
         ),
-        title: const Text("Register"),
+        title: const Text(
+          "Register",
+          style: TextStyle(color: ColorsApp.gold),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -43,7 +68,27 @@ class _RegisterViewState extends State<RegisterView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Image.asset(ImagesPath.avatarListImg, height: 100),
+                CarouselSlider(
+                  items: avatarList,
+                  options: CarouselOptions(
+                      height: 161,
+                      aspectRatio: 16 / 9,
+                      viewportFraction: 0.55,
+                      initialPage: 0,
+                      enableInfiniteScroll: true,
+                      reverse: false,
+                      autoPlay: false,
+                      autoPlayAnimationDuration: Duration(microseconds: 800),
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          selectedCarouselIndex = index;
+                        });
+                      },
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      enlargeCenterPage: true,
+                      enlargeFactor: 0.5,
+                      scrollDirection: Axis.horizontal),
+                ),
                 Text(
                   "Avatar",
                   textAlign: TextAlign.center,
@@ -54,6 +99,7 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
                 const SizedBox(height: 24.0),
                 CustomTextFormField(
+                  controller: _nameController,
                   hintText: "Name",
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -71,6 +117,7 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
                 const SizedBox(height: 16.0),
                 CustomTextFormField(
+                  controller: _emailController,
                   hintText: "Email",
                   validator: (value) {
                     final emailRegExp = RegExp(
@@ -119,13 +166,15 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
                 const SizedBox(height: 16.0),
                 CustomTextFormField(
+                  controller: _confirmPasswordController,
                   hintText: "Re-Password",
                   isPassword: true,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please re-enter your password';
                     }
-                    if (value != _passwordController.text) {
+                    if (_confirmPasswordController.text !=
+                        _passwordController.text) {
                       return 'Password does not match';
                     }
                     return null;
@@ -140,8 +189,9 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
                 const SizedBox(height: 16.0),
                 CustomTextFormField(
+                  controller: _phoneController,
                   hintText: "Phone Number",
-                  isPassword: true,
+                  isPassword: false,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your phone number';
@@ -161,8 +211,19 @@ class _RegisterViewState extends State<RegisterView> {
                   color: ColorsApp.gold,
                   onTap: () {
                     if (_formKey.currentState!.validate()) {
+<<<<<<< HEAD
                       Navigator.of(context)
                           .pushReplacementNamed(HomeView.routeName);
+=======
+                      final authController = Get.put(AuthController());
+                      authController.register(
+                        name: _nameController.text,
+                        email: _emailController.text,
+                        password: _passwordController.text,
+                        confirmPassword: _confirmPasswordController.text,
+                        phone: _phoneController.text,
+                          avatarId: selectedCarouselIndex);
+>>>>>>> origin/Auth-Test
                     }
                   },
                   backgroundColor: ColorsApp.gold,
