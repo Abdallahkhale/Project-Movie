@@ -45,15 +45,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeApp.theme,
       debugShowCheckedModeBanner: false,
-      initialRoute: OnboardingScreen.routeName,
+      initialRoute: HomeView.routeName,
       routes: {
         UpdateProfile.routeName: (context) => const UpdateProfile(),
         OnboardingScreen.routeName: (context) => OnboardingScreen(),
         LoginView.routeName: (context) => const LoginView(),
         RegisterView.routeName: (context) => const RegisterView(),
         HomeView.routeName: (context) => HomeView(),
-        ProfileTab.routeName: (context) => ProfileTab(),
-        MoviesDetailsScreen.routeName: (context) => MoviesDetailsScreen(),
+        ProfileTab.routeName: (context) => const ProfileTab(),
+        MovieDetailsScreen.routeName: (context) => MovieDetailsScreen(),
       },
       builder: EasyLoading.init(builder: BotToastInit()),
     );

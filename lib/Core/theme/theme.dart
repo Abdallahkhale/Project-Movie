@@ -4,10 +4,8 @@ import 'package:movies/Core/assets/Colors/Colors.dart';
 class ThemeApp {
   static ThemeData theme = ThemeData(
     scaffoldBackgroundColor: ColorsApp.black,
-    
     iconTheme: const IconThemeData(
       color: ColorsApp.gold,
-      
     ),
     appBarTheme: const AppBarTheme(
       iconTheme: IconThemeData(
@@ -17,7 +15,7 @@ class ThemeApp {
       elevation: 0,
     ),
     textTheme: const TextTheme(
-     headlineSmall: TextStyle(
+      headlineSmall: TextStyle(
         color: ColorsApp.gold,
         fontSize: 16,
         fontWeight: FontWeight.bold,
@@ -25,6 +23,11 @@ class ThemeApp {
       bodyLarge: TextStyle(
         color: ColorsApp.white,
         fontSize: 20,
+        fontWeight: FontWeight.bold,
+      ),
+      titleLarge: TextStyle(
+        color: ColorsApp.white,
+        fontSize: 24,
         fontWeight: FontWeight.bold,
       ),
       bodyMedium: TextStyle(
@@ -38,5 +41,4 @@ class ThemeApp {
       ),
     ),
   );
-  
 }
