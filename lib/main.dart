@@ -1,6 +1,8 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'package:movies/Core/network/dio_helper_network.dart';
 import 'package:movies/Core/theme/theme.dart';
@@ -8,7 +10,9 @@ import 'package:movies/Core/theme/theme.dart';
 import 'package:movies/UI/authentication/login_view.dart';
 import 'package:movies/UI/authentication/register_view.dart';
 import 'package:movies/UI/home/home_view.dart';
+import 'package:movies/UI/moviesdetails/movies-details-screen.dart';
 import 'package:movies/UI/onboarding/onboarding_screen.dart';
+import 'package:movies/UI/profile/profile_tab.dart';
 import 'package:movies/UI/profile/update_profile.dart';
 
 import 'package:movies/data/repositories/movie_repository.dart';
@@ -16,6 +20,9 @@ import 'package:movies/logic/bloc/movie_bloc.dart';
 import 'package:movies/logic/events/movie_event.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  DioHelper.init();
+
   final MovieRepository movieRepository = MovieRepository();
 
   runApp(
@@ -28,10 +35,6 @@ void main() {
       child: const MyApp(),
     ),
   );
-
-  WidgetsFlutterBinding.ensureInitialized();
-  DioHelper.init();
-  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -49,6 +52,8 @@ class MyApp extends StatelessWidget {
         LoginView.routeName: (context) => const LoginView(),
         RegisterView.routeName: (context) => const RegisterView(),
         HomeView.routeName: (context) => HomeView(),
+        ProfileTab.routeName: (context) => ProfileTab(),
+        MoviesDetailsScreen.routeName: (context) => MoviesDetailsScreen(),
       },
       builder: EasyLoading.init(builder: BotToastInit()),
     );

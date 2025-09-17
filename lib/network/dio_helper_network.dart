@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:movies/network/api_constants.dart';
+import 'package:movies/Core/network/api_constants.dart';
 
 class DioHelper {
   static late Dio dio;

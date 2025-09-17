@@ -8,6 +8,7 @@ import 'package:movies/UI/profile/Widgets/custom_label_text.dart';
 import 'package:movies/UI/profile/update_profile.dart';
 
 class ProfileTab extends StatelessWidget {
+  static const String routeName = "profile-tab";
   const ProfileTab({super.key});
 
   @override
@@ -101,16 +102,16 @@ class ProfileTab extends StatelessWidget {
                     Expanded(
                       child: TabBarView(
                         children: [
-                           Image.asset(
-                                  ImagesPath.body, 
-                                  width: 200,
-                                  height: 200,
-                                ),
-                         Image.asset(
-                                  ImagesPath.body, 
-                                  width: 200,
-                                  height: 200,
-                                ),
+                          Image.asset(
+                            ImagesPath.body,
+                            width: 200,
+                            height: 200,
+                          ),
+                          Image.asset(
+                            ImagesPath.body,
+                            width: 200,
+                            height: 200,
+                          ),
                         ],
                       ),
                     ),
