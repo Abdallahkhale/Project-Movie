@@ -7,14 +7,19 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
   final MovieRepository movieRepository;
 
   MovieBloc(this.movieRepository) : super(MovieInitial()) {
-    on<FetchMovies>((event, emit) async {
-      emit(MovieLoading());
-      try {
-        final movies = await movieRepository.fetchMovies();
-        emit(MovieLoaded(movies));
-      } catch (e) {
-        emit(MovieError(e.toString()));
-      }
-    });
+    on<FetchMovies>(_onFetchMovies);
+  }
+
+  Future<void> _onFetchMovies(
+      FetchMovies event, Emitter<MovieState> emit) async {
+    emit(MovieLoading());
+    try {
+      final movies = await movieRepository.fetchMovies();
+      emit(MovieLoaded(movies));
+    } catch (e, stackTrace) {
+      print("Error fetching movies: $e");
+      print(stackTrace);
+      emit(MovieError(e.toString()));
+    }
   }
 }

@@ -6,7 +6,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:movies/Core/assets/Colors/Colors.dart';
 import 'package:movies/Core/assets/images/imagesPath.dart';
 import 'package:movies/UI/moviesdetails/movies-details-screen.dart';
-import 'package:movies/UI/profile/profile_tab.dart';
+
 import 'package:movies/logic/bloc/movie_bloc.dart';
 import 'package:movies/logic/states/movie_state.dart';
 
@@ -79,7 +79,9 @@ class _HomeTabState extends State<HomeTab> {
                                 InkWell(
                                   onTap: () {
                                     Navigator.of(context).pushNamed(
-                                        MovieDetailsScreen.routeName);
+                                      MovieDetailsScreen.routeName,
+                                      arguments: movie.id,
+                                    );
                                   },
                                   child: CachedNetworkImage(
                                     imageUrl: movie.largeCoverImage,
@@ -152,7 +154,7 @@ class _HomeTabState extends State<HomeTab> {
                                 child: Stack(
                                   children: [
                                     CachedNetworkImage(
-                                        imageUrl: movie.mediumCoverImage,
+                                        imageUrl: movie.largeCoverImage,
                                         fit: BoxFit.cover,
                                         width: double.infinity,
                                         placeholder: (context, url) =>
