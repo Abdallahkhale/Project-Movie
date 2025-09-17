@@ -27,7 +27,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
   ];
 
   String selectedAvatar = ImagesPath.avatar1;
-  
+
   final DraggableScrollableController _draggableController = 
       DraggableScrollableController();
 
