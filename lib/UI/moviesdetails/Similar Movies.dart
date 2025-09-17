@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies/Core/assets/Colors/Colors.dart';
 import 'package:movies/logic/bloc/MovieDetailsCubit.dart';
 import 'package:movies/logic/states/MovieDetailsState.dart';
 
@@ -74,7 +75,7 @@ class SimilarMovies extends StatelessWidget {
                                   height: double.infinity,
                                   errorBuilder: (context, error, stackTrace) =>
                                       Container(
-                                    color: Colors.grey[800],
+                                    color: ColorsApp.greyblack,
                                     child: const Center(
                                       child: Icon(
                                         Icons.broken_image,
@@ -84,7 +85,7 @@ class SimilarMovies extends StatelessWidget {
                                   ),
                                 )
                               : Container(
-                                  color: Colors.grey[800],
+                                  color: ColorsApp.greyblack,
                                   child: const Center(
                                     child: Icon(
                                       Icons.image_not_supported,

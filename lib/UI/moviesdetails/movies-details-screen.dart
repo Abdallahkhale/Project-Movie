@@ -33,13 +33,34 @@ class MovieDetailsScreen extends StatelessWidget {
               return SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    MovieHeader(), // جوه ال Widget هتجيب البيانات من Bloc
-                    ScreenShots(), // جوه ال Widget هتجيب الصور من Bloc
-                    SimilarMovies(), // جوه ال Widget هتجيب similarMovies من Bloc
-                    Summary(), // جوه ال Widget هتجيب descriptionFull من Bloc
-                    CastList(), // جوه ال Widget هتجيب cast من Bloc
-                    Genres(), // جوه ال Widget هتجيب genres من Bloc
+                  children: [
+                    MovieHeader(),
+                    ScreenShots(
+                      images: [
+                        '/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg',
+                        '/1R6cvRtZgsYCkh8UFuWFN33xBP4.jpg',
+                        '/h4VB6m0RwcicVEZvzftYZyKXs6K.jpg',
+                      ],
+                    ),
+                    SimilarMovies(),
+                    Summary(),
+                    CastList(
+                      casts: [
+                        Cast(
+                            name: "Actor 1",
+                            character: "Character 1",
+                            profilePath: "assets/images/onboarding3.png"),
+                        Cast(
+                            name: "Actor 2",
+                            character: "Character 2",
+                            profilePath: "assets/images/onboarding3.png"),
+                        Cast(
+                            name: "Actor 3",
+                            character: "Character 3",
+                            profilePath: "assets/images/onboarding3.png"),
+                      ],
+                    ),
+                    Genres(),
                   ],
                 ),
               );

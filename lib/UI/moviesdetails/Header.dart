@@ -61,16 +61,15 @@ class MovieHeader extends StatelessWidget {
                         },
                         child: Image.asset(
                           "assets/images/play.png",
-                          height: 100,
-                          width: 100,
+                          height: size.height * 0.5,
+                          width: size.width * 0.5,
                         ),
                       ),
                     ),
                     const SizedBox(height: 10),
                     Text(
                       movie.title,
-                      style:
-                          textTheme.titleLarge?.copyWith(color: Colors.white),
+                      style: textTheme.titleLarge,
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 10),
@@ -81,7 +80,7 @@ class MovieHeader extends StatelessWidget {
                           // Handle watch button tap
                         },
                         backgroundColor: Colors.red,
-                        child: const Text(
+                        child: Text(
                           "Watch",
                           style: TextStyle(color: Colors.white, fontSize: 20),
                         ),

@@ -39,6 +39,7 @@ class MovieRepository {
       );
 
       final movieJson = response.data["data"]["movie"];
+
       final movie = Movie.fromJson(movieJson);
 
       final suggestionsResponse = await _dio.get(
