@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:movies/Core/Custom_widget/CustomTextFormField.dart';
 import 'package:movies/Core/Custom_widget/custombutton.dart';
 import 'package:movies/Core/assets/Colors/Colors.dart';
 import 'package:movies/Core/assets/images/imagesPath.dart';
 import 'package:movies/Core/network/controllers/auth_controller.dart';
+import 'package:movies/Core/services/google_sign_in_service.dart';
 import 'package:movies/UI/authentication/register_view.dart';
-import 'package:movies/UI/home/home_tab.dart';
 import 'package:movies/UI/home/home_view.dart';
 
 class LoginView extends StatefulWidget {
@@ -156,7 +158,15 @@ class _LoginViewState extends State<LoginView> {
               ),
               const SizedBox(height: 15),
               CustomButtonWidget(
-                onTap: () {
+                onTap: () async {
+                  final service = GoogleSignInService();
+                  final user = await service.signInWithGoogle();
+                  if (user != null) {
+                    EasyLoading.showSuccess(
+                        "Signed in: ${user.displayName}, ${user.email}");
+                  } else {
+                    EasyLoading.showError("Sign-in cancelled or failed");
+                  }
                   Navigator.pushNamed(context, HomeView.routeName);
                 },
                 color: ColorsApp.gold,

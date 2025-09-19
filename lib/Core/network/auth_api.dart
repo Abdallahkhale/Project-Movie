@@ -37,4 +37,17 @@ class AuthAPI {
       },
     );
   }
+
+  static Future<Response> resetPassword({
+    required String oldPassword,
+    required String newPassword,
+  }) async {
+    return await DioHelper.patchData(
+      url: EndPoints.resetPassword,
+      data: {
+        "oldPassword": oldPassword,
+        "newPassword": newPassword,
+      },
+    );
+  }
 }

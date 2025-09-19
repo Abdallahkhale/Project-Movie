@@ -5,7 +5,6 @@ import 'package:movies/Core/network/auth_api.dart';
 
 class AuthController extends GetxController {
   var isLoading = false.obs;
-  var token = ''.obs;
 
   Future<void> register({
     required String name,
@@ -55,6 +54,32 @@ class AuthController extends GetxController {
       if (response.statusCode == 200) {
         EasyLoading.showSuccess("Login successful");
         Get.offAllNamed('/home_view');
+      } else {
+        EasyLoading.showError(response.data["message"] ?? "Login failed");
+      }
+    } on DioException catch (e) {
+      EasyLoading.showError(
+          e.response?.data["message"] ?? "Something went wrong");
+    } finally {
+      isLoading.value = false;
+      EasyLoading.dismiss();
+    }
+  }
+
+  Future<void> resetPassword({
+    required String oldPassword,
+    required String newPassword,
+  }) async {
+    try {
+      isLoading.value = true;
+      EasyLoading.show(status: 'Resetting password...');
+
+      final response = await AuthAPI.resetPassword(
+          oldPassword: oldPassword, newPassword: newPassword);
+
+      if (response.statusCode == 200) {
+        EasyLoading.showSuccess("Successfully reset password");
+        Get.offAllNamed('/login_view');
       } else {
         EasyLoading.showError(response.data["message"] ?? "Login failed");
       }

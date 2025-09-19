@@ -25,4 +25,15 @@ class DioHelper {
           headers: {"Content-Type": "application/json"},
         ));
   }
+
+  static Future<Response> patchData({
+    required String url,
+    required Map<String, dynamic> data,
+  }) async {
+    return await dio.patch(url,
+        data: data,
+        options: Options(
+          headers: {"Content-Type": "application/json"},
+        ));
+  }
 }

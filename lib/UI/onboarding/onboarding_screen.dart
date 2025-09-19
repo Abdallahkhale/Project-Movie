@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies/Core/assets/Colors/Colors.dart';
+import 'package:movies/UI/authentication/login_view.dart';
 import 'package:movies/UI/authentication/register_view.dart';
 
 import 'onboarding_data.dart';
@@ -41,8 +42,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               _showBottomSheet();
             } else {
               Navigator.pop(context);
-              Navigator.of(context)
-                  .pushReplacementNamed(RegisterView.routeName);
+              Navigator.of(context).pushReplacementNamed(LoginView.routeName);
             }
           },
           isLast: _currentIndex == onboardingData.length - 1,

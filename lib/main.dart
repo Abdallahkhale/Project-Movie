@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:movies/Core/theme/theme.dart';
 
 import 'package:movies/UI/authentication/login_view.dart';
 import 'package:movies/UI/authentication/register_view.dart';
+import 'package:movies/UI/authentication/reset_password_view.dart';
 import 'package:movies/UI/home/home_view.dart';
 import 'package:movies/UI/onboarding/onboarding_screen.dart';
 import 'package:movies/UI/profile/update_profile.dart';
@@ -42,7 +44,9 @@ class MyApp extends StatelessWidget {
         LoginView.routeName: (context) => const LoginView(),
         RegisterView.routeName: (context) => const RegisterView(),
         HomeView.routeName: (context) => HomeView(),
+        ResetPasswordView.routeName: (context) => const ResetPasswordView(),
       },
+      builder: EasyLoading.init(),
     );
   }
 }
