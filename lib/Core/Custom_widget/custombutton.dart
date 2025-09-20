@@ -18,10 +18,8 @@ class CustomButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      
       onPressed: onTap,
       style: ElevatedButton.styleFrom(
-        
         backgroundColor: backgroundColor,
         padding: EdgeInsets.symmetric(vertical: 14),
         shape: RoundedRectangleBorder(

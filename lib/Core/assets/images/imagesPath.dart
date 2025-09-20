@@ -23,7 +23,6 @@ abstract class ImagesPath {
   static const String nativesplash = '$root/nativesplash.png';
   static const String loginImg = "assets/images/splash.png";
   static const String languageSwitchImg = "assets/images/Language Switch.png";
-  static const String avatarListImg = "assets/images/Avatar_list.png";
   static const String emailIcn = "assets/icons/Email_Icon.png";
   static const String googleIcn = "assets/icons/Google_Icon.png";
   static const String nameIcn = "assets/icons/Name_Icon.png";
@@ -33,4 +32,6 @@ abstract class ImagesPath {
   static const String search = 'assets/icons/search.png';
   static const String explore = 'assets/icons/explore.png';
   static const String Profiel = 'assets/icons/Profiel.png';
+  static const String forgotPasswordImg =
+      'assets/images/Forgot password image.png';
 }
