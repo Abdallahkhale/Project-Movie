@@ -24,7 +24,6 @@ class Movie {
   });
 
   factory Movie.fromJson(Map<String, dynamic> json) {
-    // فلترة الـ screenshots عشان أي رابط فاضي أو null يتجاهل
     final screenshots = [
       json["medium_screenshot_image1"],
       json["medium_screenshot_image2"],
@@ -34,7 +33,6 @@ class Movie {
         .map((e) => e.toString())
         .toList();
 
-    // فلترة الـ cast عشان أي عنصر ناقص يتجاهل
     final castList = (json["cast"] as List<dynamic>?)
             ?.map((c) => {
                   "name": (c["name"] ?? "").toString(),
@@ -57,7 +55,7 @@ class Movie {
       descriptionFull: json["description_full"] ?? "",
       screenshots: screenshots,
       cast: castList,
-      similarMovies: [], // هتتملي من MovieRepository
+      similarMovies: [],
     );
   }
 

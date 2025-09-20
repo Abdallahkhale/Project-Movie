@@ -13,8 +13,7 @@ class MovieDetailsCubit extends Cubit<MovieDetailsState> {
       final movie = await repository.getMovieDetails(id);
       emit(MovieDetailsLoaded(movie));
     } catch (e, stackTrace) {
-      // Debugging purpose
-      print("Error fetching movie details: $e");
+      // Debugging purposeprint("Error fetching movie details: $e");
       print(stackTrace);
       emit(MovieDetailsError(e.toString()));
     }

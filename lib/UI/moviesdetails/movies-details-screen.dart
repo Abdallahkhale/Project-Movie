@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/Core/assets/Colors/Colors.dart';
+import 'package:movies/Core/assets/images/imagesPath.dart';
 import 'package:movies/UI/moviesdetails/Genres.dart';
 import 'package:movies/UI/moviesdetails/Header.dart';
 import 'package:movies/UI/moviesdetails/Similar%20Movies.dart';
@@ -35,11 +36,11 @@ class MovieDetailsScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     MovieHeader(),
-                    ScreenShots(
+                    const ScreenShots(
                       images: [
-                        '/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg',
-                        '/1R6cvRtZgsYCkh8UFuWFN33xBP4.jpg',
-                        '/h4VB6m0RwcicVEZvzftYZyKXs6K.jpg',
+                        ImagesPath.onboarding1,
+                        ImagesPath.onboarding2,
+                        ImagesPath.onboarding3,
                       ],
                     ),
                     SimilarMovies(),
@@ -47,17 +48,23 @@ class MovieDetailsScreen extends StatelessWidget {
                     CastList(
                       casts: [
                         Cast(
-                            name: "Actor 1",
-                            character: "Character 1",
-                            profilePath: "assets/images/onboarding3.png"),
+                          name: "Name : Hayley Atwell",
+                          character: "Character : Captain Carter",
+                          profilePath: ImagesPath.onboarding1,
+                        ),
                         Cast(
-                            name: "Actor 2",
-                            character: "Character 2",
-                            profilePath: "assets/images/onboarding3.png"),
+                            name: "Name : Elizabeth Olsen",
+                            character:
+                                "Character : Wanda Maximoff / The Scarlet Witch",
+                            profilePath: ImagesPath.onboarding2),
                         Cast(
-                            name: "Actor 3",
-                            character: "Character 3",
-                            profilePath: "assets/images/onboarding3.png"),
+                            name: "Name : Rachel McAdams",
+                            character: "Character : Dr. Christine Palmer",
+                            profilePath: ImagesPath.onboarding3),
+                        Cast(
+                            name: "Name : Charlize Theron",
+                            character: "Character : Clea",
+                            profilePath: ImagesPath.onboarding4),
                       ],
                     ),
                     Genres(),

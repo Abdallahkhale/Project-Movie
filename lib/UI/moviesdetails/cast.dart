@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:movies/Core/assets/Colors/Colors.dart';
 
-// موديل بسيط للـ cast (تقدر تستبدله باللي عندك في الـ API)
 class Cast {
-  final String name;
-  final String character;
-  final String profilePath;
+  final String? name;
+  final String? character;
+  final String? profilePath;
 
-  Cast(
-      {required this.name, required this.character, required this.profilePath});
+  Cast({this.name, this.character, this.profilePath});
 }
 
 class CastList extends StatelessWidget {
@@ -46,16 +44,17 @@ class CastList extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         image: DecorationImage(
-                          image: cast.profilePath.isEmpty
+                          image: cast.profilePath?.isEmpty ?? true
                               ? NetworkImage(
                                   "https://image.tmdb.org/t/p/w500${cast.profilePath}")
-                              : AssetImage('assets/images/onboarding3.png')
-                                  as ImageProvider,
+                              : AssetImage(
+                                  'assets/images/onboarding${index + 1}.png'),
+                          //as ImageProvider,
                           fit: BoxFit.cover,
                         ),
                       ),
                     ),
-                    const SizedBox(width: 10),
+                    const SizedBox(width: 8),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

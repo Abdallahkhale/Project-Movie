@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/Core/assets/Colors/Colors.dart';
+import 'package:movies/Core/assets/images/imagesPath.dart';
 
 class ScreenShots extends StatelessWidget {
   final List<String> images;
@@ -11,12 +12,12 @@ class ScreenShots extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    final displayImages = images.isNotEmpty
+    final displayImages = images.isEmpty
         ? images.map((url) => "https://image.tmdb.org/t/p/w500$url").toList()
         : [
-            "assets/images/onboarding1.png",
-            "assets/images/onboarding2.png",
-            "assets/images/onboarding3.png",
+            ImagesPath.onboarding1,
+            ImagesPath.onboarding2,
+            ImagesPath.onboarding3,
           ];
 
     return SizedBox(
@@ -54,7 +55,7 @@ class ScreenShots extends StatelessWidget {
                                   color: ColorsApp.gold),
                             ),
                             errorWidget: (context, _, __) => Image.asset(
-                              'assets/images/static1.png',
+                              ImagesPath.onboarding1,
                               width: size.width,
                               height: size.height * 0.25,
                               fit: BoxFit.cover,

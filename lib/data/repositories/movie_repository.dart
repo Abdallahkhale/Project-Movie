@@ -39,6 +39,7 @@ class MovieRepository {
       );
 
       final movieJson = response.data["data"]["movie"];
+      //print(movieJson);
 
       final movie = Movie.fromJson(movieJson);
 
