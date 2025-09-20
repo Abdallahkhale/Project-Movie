@@ -17,6 +17,7 @@ import 'package:movies/UI/profile/update_profile.dart';
 
 import 'package:movies/data/repositories/movie_repository.dart';
 import 'package:movies/logic/bloc/movie_bloc.dart';
+import 'package:movies/logic/bloc/search_state.dart';
 import 'package:movies/logic/events/movie_event.dart';
 
 void main() {
@@ -30,6 +31,9 @@ void main() {
       providers: [
         BlocProvider<MovieBloc>(
           create: (context) => MovieBloc(movieRepository)..add(FetchMovies()),
+        ),
+        BlocProvider(
+          create: (context) => SearchCubit(movieRepository),
         ),
       ],
       child: const MyApp(),

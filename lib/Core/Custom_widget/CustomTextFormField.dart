@@ -9,6 +9,7 @@ class CustomTextFormField extends StatefulWidget {
     this.isPassword = false,
     this.validator,
     this.controller,
+    this.onChanged, // اضفت ده
   });
 
   final Widget? prefixIcon;
@@ -16,6 +17,7 @@ class CustomTextFormField extends StatefulWidget {
   final bool isPassword;
   final String? Function(String?)? validator;
   final TextEditingController? controller;
+  final Function(String)? onChanged; // اضفت نوع Function
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -30,6 +32,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       controller: widget.controller,
       obscureText: widget.isPassword ? obscureText : false,
       validator: widget.validator,
+      onChanged: widget.onChanged, // هنا بقى متصل بالـ Cubit
       decoration: InputDecoration(
         filled: true,
         fillColor: Colors.white24,
@@ -40,20 +43,19 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           color: Colors.white,
         ),
         prefixIcon: widget.prefixIcon,
-        suffixIcon:
-            widget.isPassword
-                ? GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      obscureText = !obscureText;
-                    });
-                  },
-                  child: Icon(
-                    obscureText ? Icons.visibility_off : Icons.visibility,
-                    color: Colors.white,
-                  ),
-                )
-                : null,
+        suffixIcon: widget.isPassword
+            ? GestureDetector(
+                onTap: () {
+                  setState(() {
+                    obscureText = !obscureText;
+                  });
+                },
+                child: Icon(
+                  obscureText ? Icons.visibility_off : Icons.visibility,
+                  color: Colors.white,
+                ),
+              )
+            : null,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: const BorderSide(

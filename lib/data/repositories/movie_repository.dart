@@ -60,4 +60,29 @@ class MovieRepository {
       throw Exception("Error fetching movie details: $e");
     }
   }
+
+  /// ✅ Search Movies
+  Future<List<Movie>> searchMovies(String query) async {
+    try {
+      final response = await _dio.get(
+        "list_movies.json",
+        queryParameters: {"query_term": query},
+      );
+
+      if (response.statusCode == 200) {
+        final moviesData = response.data["data"]["movies"] as List?;
+        if (moviesData == null) return [];
+
+        return moviesData
+            .map((movieJson) => Movie.fromJson(movieJson))
+            .toList();
+      } else {
+        throw Exception("Failed to search movies");
+      }
+    } on DioError catch (e) {
+      throw Exception("Dio error searching movies: ${e.message}");
+    } catch (e) {
+      throw Exception("Error searching movies: $e");
+    }
+  }
 }
