@@ -29,11 +29,13 @@ class DioHelper {
   static Future<Response> patchData({
     required String url,
     required Map<String, dynamic> data,
-  }) async {
+      Map<String, dynamic>? query,
+      String? token}) async {
+    dio.options.headers = {
+      'Authorization': 'Bearer $token',
+      'Content-Type': 'application/json'
+    };
     return await dio.patch(url,
-        data: data,
-        options: Options(
-          headers: {"Content-Type": "application/json"},
-        ));
+        data: data, queryParameters: query);
   }
 }

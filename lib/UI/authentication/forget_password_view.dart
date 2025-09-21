@@ -4,16 +4,16 @@ import 'package:movies/Core/Custom_widget/custombutton.dart';
 import 'package:movies/Core/assets/Colors/Colors.dart';
 import 'package:movies/Core/assets/images/imagesPath.dart';
 
-class ResetPasswordView extends StatefulWidget {
+class ForgetPasswordView extends StatefulWidget {
   static const routeName = '/reset_password_view';
 
-  const ResetPasswordView({super.key});
+  const ForgetPasswordView({super.key});
 
   @override
-  State<ResetPasswordView> createState() => _ResetPasswordViewState();
+  State<ForgetPasswordView> createState() => _ForgetPasswordViewState();
 }
 
-class _ResetPasswordViewState extends State<ResetPasswordView> {
+class _ForgetPasswordViewState extends State<ForgetPasswordView> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {

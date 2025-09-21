@@ -7,8 +7,8 @@ import 'package:movies/Core/assets/Colors/Colors.dart';
 import 'package:movies/Core/assets/images/imagesPath.dart';
 import 'package:movies/Core/network/controllers/auth_controller.dart';
 import 'package:movies/Core/services/google_sign_in_service.dart';
+import 'package:movies/UI/authentication/forget_password_view.dart';
 import 'package:movies/UI/authentication/register_view.dart';
-import 'package:movies/UI/authentication/reset_password_view.dart';
 import 'package:movies/UI/home/home_view.dart';
 
 class LoginView extends StatefulWidget {
@@ -83,7 +83,8 @@ class _LoginViewState extends State<LoginView> {
                   alignment: Alignment.centerRight,
                   child: TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, ResetPasswordView.routeName);
+                      Navigator.pushNamed(
+                          context, ForgetPasswordView.routeName);
                     },
                     child: const Text(
                       "Forget Password?",

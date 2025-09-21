@@ -41,6 +41,7 @@ class AuthAPI {
   static Future<Response> resetPassword({
     required String oldPassword,
     required String newPassword,
+    required String token,
   }) async {
     return await DioHelper.patchData(
       url: EndPoints.resetPassword,
@@ -48,6 +49,6 @@ class AuthAPI {
         "oldPassword": oldPassword,
         "newPassword": newPassword,
       },
-    );
+        token: token);
   }
 }

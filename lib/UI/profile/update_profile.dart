@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:movies/Core/Custom_widget/CustomTextFormField.dart';
 import 'package:movies/Core/Custom_widget/custombutton.dart';
 import 'package:movies/Core/assets/Colors/Colors.dart';
 import 'package:movies/Core/assets/images/imagesPath.dart';
+import 'package:movies/Core/network/controllers/auth_controller.dart';
 import 'package:movies/Core/theme/theme.dart';
 
 class UpdateProfile extends StatefulWidget {
@@ -14,6 +16,9 @@ class UpdateProfile extends StatefulWidget {
 }
 
 class _UpdateProfileState extends State<UpdateProfile> {
+  final TextEditingController _oldPasswordController = TextEditingController();
+  final TextEditingController _newPasswordController = TextEditingController();
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   List<String> avatars = [
     ImagesPath.avatar1,
     ImagesPath.avatar2,
@@ -37,6 +42,73 @@ class _UpdateProfileState extends State<UpdateProfile> {
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       builder: (context) => _buildAvatarSheet(),
+    );
+  }
+
+  Widget _resetPasswordWidget() {
+    return Container(
+      height: double.infinity,
+      width: double.infinity,
+      color: Colors.black,
+      child: Form(
+        key: _formkey,
+        child: Column(
+          spacing: 15,
+          children: [
+            const SizedBox(height: 15),
+            CustomTextFormField(
+              controller: _oldPasswordController,
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return "Please Enter The Old Password";
+                }
+                return null;
+              },
+              prefixIcon: const Padding(
+                padding: EdgeInsets.all(12.0),
+                child: ImageIcon(AssetImage(ImagesPath.passwordIcn),
+                    color: Colors.white, size: 30),
+              ),
+              hintText: "Old Password",
+            ),
+            CustomTextFormField(
+              controller: _newPasswordController,
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return "Please Enter The New Password";
+                }
+                return null;
+              },
+              prefixIcon: const Padding(
+                padding: EdgeInsets.all(12.0),
+                child: ImageIcon(AssetImage(ImagesPath.passwordIcn),
+                    color: Colors.white, size: 30),
+              ),
+              hintText: "New Password",
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 12),
+              width: double.infinity,
+              child: CustomButtonWidget(
+                backgroundColor: ColorsApp.gold,
+                color: ColorsApp.gold,
+                onTap: () {
+                  if (_formkey.currentState!.validate()) {
+                    final authController = Get.put(AuthController());
+                    authController.resetPassword(
+                        oldPassword: _oldPasswordController.text,
+                        newPassword: _newPasswordController.text);
+                  }
+                },
+                child: const Text(
+                  "Reset Password",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 
@@ -209,7 +281,11 @@ class _UpdateProfileState extends State<UpdateProfile> {
             Align(
               alignment: Alignment.centerLeft,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  showModalBottomSheet(
+                      context: context,
+                      builder: (context) => _resetPasswordWidget());
+                },
                 child: Text(
                   "Reset Password",
                   style: theme.bodyLarge,

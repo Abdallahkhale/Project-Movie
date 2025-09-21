@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:movies/Core/network/dio_helper_network.dart';
 import 'package:movies/Core/theme/theme.dart';
-
+import 'package:movies/UI/authentication/forget_password_view.dart';
 import 'package:movies/UI/authentication/login_view.dart';
 import 'package:movies/UI/authentication/register_view.dart';
-import 'package:movies/UI/authentication/reset_password_view.dart';
 import 'package:movies/UI/home/home_view.dart';
 import 'package:movies/UI/onboarding/onboarding_screen.dart';
 import 'package:movies/UI/profile/update_profile.dart';
-
 import 'package:movies/data/repositories/movie_repository.dart';
 import 'package:movies/logic/bloc/movie_bloc.dart';
 import 'package:movies/logic/events/movie_event.dart';
 
 void main() {
   final MovieRepository movieRepository = MovieRepository();
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  DioHelper.init();
 
   runApp(
     MultiBlocProvider(
@@ -44,7 +47,7 @@ class MyApp extends StatelessWidget {
         LoginView.routeName: (context) => const LoginView(),
         RegisterView.routeName: (context) => const RegisterView(),
         HomeView.routeName: (context) => HomeView(),
-        ResetPasswordView.routeName: (context) => const ResetPasswordView(),
+        ForgetPasswordView.routeName: (context) => const ForgetPasswordView(),
       },
       builder: EasyLoading.init(),
     );

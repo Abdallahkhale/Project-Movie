@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:movies/Core/network/api_constants.dart';
 import 'package:movies/Core/network/auth_api.dart';
 
 class AuthController extends GetxController {
@@ -72,16 +73,15 @@ class AuthController extends GetxController {
   }) async {
     try {
       isLoading.value = true;
-      EasyLoading.show(status: 'Resetting password...');
-
+      EasyLoading.show(status: 'Resetting Password...');
+      String token = ApiConstants.resetPasswordToken;
       final response = await AuthAPI.resetPassword(
-          oldPassword: oldPassword, newPassword: newPassword);
-
-      if (response.statusCode == 200) {
+          oldPassword: oldPassword, newPassword: newPassword, token: token);
+      if (response.statusCode == 201) {
         EasyLoading.showSuccess("Successfully reset password");
-        Get.offAllNamed('/login_view');
       } else {
-        EasyLoading.showError(response.data["message"] ?? "Login failed");
+        EasyLoading.showError(
+            response.data["message"] ?? "Reset password failed");
       }
     } on DioException catch (e) {
       EasyLoading.showError(
