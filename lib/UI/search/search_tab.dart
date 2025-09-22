@@ -28,8 +28,6 @@ class SearchTab extends StatelessWidget {
                 prefixIcon: Image.asset(ImagesPath.search),
                 onChanged: (value) {
                   if (value.isEmpty) {
-                    // لو الحقل فاضي، نرجع الحالة الافتراضية
-                    //searchCubit.emit(SearchInitial());
                   } else {
                     searchCubit.searchMovies(value);
                   }
