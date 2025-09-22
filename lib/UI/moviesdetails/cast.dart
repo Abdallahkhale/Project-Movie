@@ -49,7 +49,6 @@ class CastList extends StatelessWidget {
                                   "https://image.tmdb.org/t/p/w500${cast.profilePath}")
                               : AssetImage(
                                   'assets/images/onboarding${index + 1}.png'),
-                          //as ImageProvider,
                           fit: BoxFit.cover,
                         ),
                       ),

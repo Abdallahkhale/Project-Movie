@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/Core/assets/Colors/Colors.dart';
+import 'package:movies/UI/moviesdetails/movies-details-screen.dart';
 import 'package:movies/logic/bloc/MovieDetailsCubit.dart';
 import 'package:movies/logic/states/MovieDetailsState.dart';
 
@@ -29,7 +30,10 @@ class SimilarMovies extends StatelessWidget {
         BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
           builder: (context, state) {
             if (state is MovieDetailsLoading) {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(
+                  child: CircularProgressIndicator(
+                color: ColorsApp.gold,
+              ));
             } else if (state is MovieDetailsLoaded) {
               final movies = state.movie.similarMovies;
 
@@ -63,63 +67,73 @@ class SimilarMovies extends StatelessWidget {
                             ? movie.backgroundImage
                             : '');
 
-                    return Stack(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(16),
-                          child: imageUrl.isNotEmpty
-                              ? Image.network(
-                                  imageUrl,
-                                  fit: BoxFit.cover,
-                                  width: double.infinity,
-                                  height: double.infinity,
-                                  errorBuilder: (context, error, stackTrace) =>
-                                      Container(
+                    return InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          MovieDetailsScreen.routeName,
+                          arguments: movie.id,
+                        );
+                      },
+                      child: Stack(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(16),
+                            child: imageUrl.isNotEmpty
+                                ? Image.network(
+                                    imageUrl,
+                                    fit: BoxFit.cover,
+                                    width: double.infinity,
+                                    height: double.infinity,
+                                    errorBuilder:
+                                        (context, error, stackTrace) =>
+                                            Container(
+                                      color: ColorsApp.greyblack,
+                                      child: const Center(
+                                        child: Icon(
+                                          Icons.broken_image,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                : Container(
                                     color: ColorsApp.greyblack,
                                     child: const Center(
                                       child: Icon(
-                                        Icons.broken_image,
+                                        Icons.image_not_supported,
                                         color: Colors.white,
                                       ),
                                     ),
                                   ),
-                                )
-                              : Container(
-                                  color: ColorsApp.greyblack,
-                                  child: const Center(
-                                    child: Icon(
-                                      Icons.image_not_supported,
+                          ),
+                          Positioned(
+                            top: 8,
+                            left: 8,
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 6, vertical: 3),
+                              decoration: BoxDecoration(
+                                color: Colors.black.withOpacity(0.7),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Row(
+                                children: [
+                                  const Text("⭐",
+                                      style: TextStyle(color: Colors.yellow)),
+                                  const SizedBox(width: 3),
+                                  Text(
+                                    movie.rating.toString(),
+                                    style: textTheme.bodySmall?.copyWith(
                                       color: Colors.white,
                                     ),
                                   ),
-                                ),
-                        ),
-                        Positioned(
-                          top: 8,
-                          left: 8,
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 6, vertical: 3),
-                            decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.7),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Row(
-                              children: [
-                                const Text("⭐",
-                                    style: TextStyle(color: Colors.yellow)),
-                                const SizedBox(width: 3),
-                                Text(
-                                  movie.rating.toString(),
-                                  style: textTheme.bodySmall?.copyWith(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     );
                   },
                 ),

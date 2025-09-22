@@ -39,7 +39,7 @@ class _HomeTabState extends State<HomeTab> {
               children: [
                 Positioned.fill(
                   child: CachedNetworkImage(
-                    imageUrl: movies[currentIndex].backgroundImage,
+                    imageUrl: movies[currentIndex].largeCoverImage,
                     fit: BoxFit.cover,
                     placeholder: (context, url) => const Center(
                         child: CircularProgressIndicator(
