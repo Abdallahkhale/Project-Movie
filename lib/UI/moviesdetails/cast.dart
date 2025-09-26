@@ -44,11 +44,11 @@ class CastList extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         image: DecorationImage(
-                          image: cast.profilePath?.isEmpty ?? true
+                          image: (cast.profilePath?.isNotEmpty ?? false)
                               ? NetworkImage(
                                   "https://image.tmdb.org/t/p/w500${cast.profilePath}")
-                              : AssetImage(
-                                  'assets/images/onboarding${index + 1}.png'),
+                              : const AssetImage(
+                                  'assets/images/onboarding1.png') as ImageProvider,
                           fit: BoxFit.cover,
                         ),
                       ),
